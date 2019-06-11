@@ -22,9 +22,8 @@ const time_in_seconds = 8
 
 func main() {
 	// Parse flags
-	var userCsvFile = flag.String("csvFile", "problems.csv", "Defaults to problems.csv, pass flag if you want to use your own csv file.")
-	var timeInSeconds = flag.Int("timeInSeconds", 30, "Seconds that user has to take the quiz")
-
+	var userCsvFile = flag.String("file", "problems.csv", "Defaults to problems.csv, pass flag if you want to use your own csv file.")
+	var timeInSeconds = flag.Int("time", 30, "Seconds that user has to take the quiz")
 	flag.Parse()
 
 	// Read in CSV file
@@ -60,12 +59,12 @@ func main() {
 		fmt.Printf("What is %s: ", line[0])
 		userInput, _ := userInputReader.ReadString('\n')
 		if strings.TrimSpace(userInput) == line[1] {
-			fmt.Println("Correct\n")
+			fmt.Println("\nCorrect\n")
 			// Increment correctAnswers variable
 			correctAnswers += 1
 
 		} else {
-			fmt.Printf("Incorrect. Answer is %s. You typed %s\n", line[1], userInput)
+			fmt.Printf("\nIncorrect. Answer is %s. You typed %s\n", line[1], userInput)
 			// Increment incorrectAnswers
 			incorrectAnswers += 1
 		}
